@@ -56,6 +56,7 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   ```
   # miejsce na twoje notatki
    Naprawiono błąd w formacie JSON: Poprzednia wersja zwracała nieprawidłowy format (brak cudzysłowu w kluczu mgs). Obecna wersja generuje poprawny obiekt JSON zgodny ze standardem.
+Problem: Aplikacja zwracała niepoprawny ciąg znaków: { "imie":"Michal", "mgs":Hello World!"} – brakowało cudzysłowu otwierającego wartość dla klucza mgs. Zmieniono sposób składania ciągu w pliku formater.py na "mgs":"' + msg + '"
   ```
 
 # Pomocnicze
