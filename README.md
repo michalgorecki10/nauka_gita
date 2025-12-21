@@ -55,6 +55,7 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
   ```
   # miejsce na twoje notatki
+   Naprawiono błąd w formacie JSON: Poprzednia wersja zwracała nieprawidłowy format (brak cudzysłowu w kluczu mgs). Obecna wersja generuje poprawny obiekt JSON zgodny ze standardem.
   ```
 
 # Pomocnicze
