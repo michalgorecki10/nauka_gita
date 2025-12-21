@@ -86,3 +86,7 @@ Problem: Aplikacja zwracała niepoprawny ciąg znaków: { "imie":"Michal", "mgs"
   $ yum install -y docker-ce
   $ systemctl start docker
   ```
+## Docker Hub
+Obraz projektu jest dostępny pod adresem: 
+[https://hub.docker.com/r/michalgorecki10/hello-world-printer](https://hub.docker.com/r/michalgorecki10/hello-world-printer)
+![Zrzut ekranu z Docker Hub](docker_hub_screenshot.png)
