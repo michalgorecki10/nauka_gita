@@ -1,92 +1,58 @@
-# Simple Flask App
+# Simple Flask App - Nauka CI/CD
 
-Aplikacja Dydaktyczna wyświetlająca imię i wiadomość w różnych formatach dla zajęć
-o Continuous Integration, Continuous Delivery i Continuous Deployment.
+Projekt dydaktyczny realizowany w celu nauki procesów Continuous Integration, Continuous Delivery oraz Continuous Deployment. Aplikacja oparta na frameworku Flask, wyświetlająca komunikaty w różnych formatach.
 
-- W projekcie wykorzystamy virtual environment, dla utworzenia hermetycznego środowisko dla aplikacji:
+## Wykonane Zadania
 
-  ```
-  # tworzymy hermetyczne środowisko dla bibliotek aplikacji:
-  $ python -m venv .venv
+### 1. Konfiguracja Środowiska Lokalnego
+- Utworzono hermetyczne środowisko wirtualne (`venv`).
+- Zainstalowano niezbędne zależności z plików `requirements.txt` oraz `test_requirements.txt`.
+- Skonfigurowano plik `Makefile` jako "Single Point of Entry" dla kluczowych zadań (instalacja, testy, lint).
 
-  # aktywowanie hermetycznego środowiska
-  $ source .venv/Source/activate
-  $ pip install -r requirements.txt
-  $ pip install -r test_requirements.txt
+### 2. Poprawa Jakości Kodu (Linting)
+- Wdrożono narzędzie `flake8` do sprawdzania zgodności kodu ze standardem **PEP8**.
+- Naprawiono błędy stylistyczne:
+    - Dodano odpowiednią liczbę pustych linii w pliku `views.py`.
+    - Użyto komentarza `# noqa`, aby uciszyć zamierzone błędy importu w `__init__.py`.
+    - Zapewniono obecność pustej linii na końcu plików (zgodnie z błędem `W292`).
 
-  # zobacz
-  $ pip list
-  ```
+### 3. Automatyzacja z CircleCI (Continuous Integration)
+- Utworzono folder `.circleci` i plik konfiguracyjny `config.yml`.
+- Skonfigurowano rurociąg (pipeline), który automatycznie przy każdym wypchnięciu kodu (`git push`):
+    - Pobiera kod (`checkout`).
+    - Instaluje zależności (`make deps`).
+    - Sprawdza styl kodu (`make lint`).
+    - Uruchamia testy jednostkowe (`make test`).
+- Przeprowadzono symulację awarii i naprawy procesu budowania (Fail/Success).
 
-  Sprawdź: [tutorial venv](https://docs.python.org/3/tutorial/venv.html) oraz [biblioteki flask](http://flask.pocoo.org).
+### 4. Konteneryzacja (Docker)
+- Przygotowano instrukcję budowania obrazu w pliku `Dockerfile`.
+- Rozszerzono `Makefile` o zadania:
+    - `docker_build`: Budowanie obrazu aplikacji.
+    - `docker_run`: Uruchamianie aplikacji w izolowanym kontenerze.
+- Przetestowano lokalnie działanie aplikacji w kontenerze na porcie `5000`.
+- Zintegrowano budowanie Dockera z CircleCI na maszynie `ubuntu-2204:2024.01.2`.
 
-- Uruchamianie applikacji:
+### 5. Continuous Delivery (Docker Hub)
+- Obraz został poprawnie otagowany i wysłany do publicznego rejestru **Docker Hub**.
+- Link do obrazu: [https://hub.docker.com/r/michalgorecki10/hello-world-printer](https://hub.docker.com/r/michalgorecki10/hello-world-printer)
 
-  ```
-  # jako zwykły program
-  $ python main.py
+---
 
-  # albo:
-  $ PYTHONPATH=. FLASK_APP=hello_world flask run
-  ```
+## Dokumentacja Wizualna
 
-- Uruchamianie testów (see: http://doc.pytest.org/en/latest/capture.html):
+### Potwierdzenie publikacji w Docker Hub
+![Zrzut ekranu z Docker Hub](docker_hub_screenshot.png)
 
-  ```
-  $ PYTHONPATH=. py.test
-  $ PYTHONPATH=. py.test --verbose -s
-  ```
+---
 
-- Kontynuując pracę z projektem, aktywowanie hermetycznego środowiska dla aplikacji py:
+## Instrukcja Uruchomienia
 
-  ```
-  # deaktywacja
-  $ deactivate
-  ```
-
-  ```
-  ...
-
-  # aktywacja 
-  $ source .venv/Source/activate
-  ```
-
-- Integracja z TravisCI:
-
-  ```
-  # miejsce na twoje notatki
-   Naprawiono błąd w formacie JSON: Poprzednia wersja zwracała nieprawidłowy format (brak cudzysłowu w kluczu mgs). Obecna wersja generuje poprawny obiekt JSON zgodny ze standardem.
-Problem: Aplikacja zwracała niepoprawny ciąg znaków: { "imie":"Michal", "mgs":Hello World!"} – brakowało cudzysłowu otwierającego wartość dla klucza mgs. Zmieniono sposób składania ciągu w pliku formater.py na "mgs":"' + msg + '"
-  ```
-
-# Pomocnicze
-
-## Ubuntu
-
-- Instalacja dockera: [dockerce howto](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-
-## Centos
-
-- Instalacja docker-a:
-
-  ```
-  $ yum remove docker \
-        docker-common \
-        container-selinux \
-        docker-selinux \
-        docker-engine
-
-  $ yum install -y yum-utils
-
-  $ yum-config-manager \
-      --add-repo \
-      https://download.docker.com/linux/centos/docker-ce.repo
-
-  $ yum makecache fast
-  $ yum install -y docker-ce
-  $ systemctl start docker
-  ```
-## Docker Hub
-Obraz projektu jest dostępny pod adresem: 
-https://hub.docker.com/r/michalgorecki10/hello-world-printer
-
+### Środowisko lokalne:
+```bash
+# Instalacja
+make deps
+# Testy
+make test
+# Uruchomienie
+python main.py
