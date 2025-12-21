@@ -89,4 +89,4 @@ Problem: Aplikacja zwracała niepoprawny ciąg znaków: { "imie":"Michal", "mgs"
 ## Docker Hub
 Obraz projektu jest dostępny pod adresem: 
 https://hub.docker.com/r/michalgorecki10/hello-world-printer
-![Zrzut ekranu z Docker Hub](docker_hub_screenshot.png)
+
