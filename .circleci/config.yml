@@ -4,16 +4,23 @@ jobs:
   build-and-test:
     machine:
       image: ubuntu-2204:2024.01.2
-      docker_layer_caching: true 
-        
+      docker_layer_caching: true
     steps:
       - checkout
-      - run: make deps
-      - run: make lint
-      - run: make test
-      - run: make docker_push
+      - run:
+          name: Install dependencies
+          command: make deps
+      - run:
+          name: Run lint
+          command: make lint
+      - run:
+          name: Run tests
+          command: make test
+      - run:
+          name: Build and Push Docker Image
+          command: make docker_push
 
 workflows:
-  basic:
+  main_workflow:
     jobs:
       - build-and-test

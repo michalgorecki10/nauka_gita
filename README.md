@@ -35,7 +35,7 @@ Projekt dydaktyczny realizowany w celu nauki procesów Continuous Integration, C
 
 ### 5. Continuous Delivery (Docker Hub)
 - Obraz został poprawnie otagowany i wysłany do publicznego rejestru **Docker Hub**.
-- Link do obrazu: [https://hub.docker.com/r/michalgorecki10/hello-world-printer](https://hub.docker.com/r/michalgorecki10/hello-world-printer)
+- Link do obrazu: [https://hub.docker.com/r/michalgorecki10/hello-world-printerv2](https://hub.docker.com/r/michalgorecki10/hello-world-printerv2)
 
 ---
 
