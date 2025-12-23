@@ -36,6 +36,9 @@ Projekt dydaktyczny realizowany w celu nauki procesów Continuous Integration, C
 ### 5. Continuous Delivery (Docker Hub)
 - Obraz został poprawnie otagowany i wysłany do publicznego rejestru **Docker Hub**.
 - Link do obrazu: [https://hub.docker.com/r/michalgorecki10/hello-world-printerv2](https://hub.docker.com/r/michalgorecki10/hello-world-printerv2)
+### Link do CircleCI:
+[https://app.circleci.com/projects/github/michalgorecki10/nauka_gita]  (https://app.circleci.com/projects/github/michalgorecki10/nauka_gita)
+
 
 ---
 
@@ -43,6 +46,15 @@ Projekt dydaktyczny realizowany w celu nauki procesów Continuous Integration, C
 
 ### Potwierdzenie publikacji w Docker Hub
 ![Zrzut ekranu z Docker Hub](docker_hub_screenshotv2.png)
+
+### Workflow "build-and-test" na CircleCI:
+![Zrzut ekranu z CircleCI - Workflow](CircleCI.png)
+
+### Działająca aplikacja
+Zrzut ekranu przedstawiający aplikację działającą w przeglądarce pod adresem `http://127.0.0.1:5000`, pobraną z Docker Hub.
+
+![Zrzut ekranu z działającej aplikacji](hello127.png)
+
 
 ---
 
