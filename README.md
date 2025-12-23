@@ -42,7 +42,7 @@ Projekt dydaktyczny realizowany w celu nauki procesów Continuous Integration, C
 ## Dokumentacja Wizualna
 
 ### Potwierdzenie publikacji w Docker Hub
-![Zrzut ekranu z Docker Hub](docker_hub_screenshot.png)
+![Zrzut ekranu z Docker Hub](docker_hub_screenshotv2.png)
 
 ---
 
